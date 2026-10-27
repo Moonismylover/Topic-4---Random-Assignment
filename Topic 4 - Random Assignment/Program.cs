@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Security.Principal;
 using System.Text;
@@ -11,17 +12,138 @@ namespace Topic_4___Random_Assignment
     {
         public static void RandomIntegers()
         {
-            Console.WriteLine("Enter a minimum value: ");
-            double minValue = Convert.ToDouble(Console.ReadLine());
+            int number;
+
+            Random generator = new Random();
+
+            Console.WriteLine("------------------------- Random Integers -------------------------");
+            Console.WriteLine();
+
+            Console.Write("Enter a minimum value: ");
+            int minValue = Convert.ToInt32(Console.ReadLine());
 
             Console.WriteLine();
 
-            Console.WriteLine("Enter a maximum value: ");
-            double maxValue = Convert.ToDouble(Console.ReadLine());
+            Console.Write("Enter a maximum value: ");
+            int maxValue = Convert.ToInt32(Console.ReadLine());
+
+            Console.WriteLine();
+
+            for (int index = 0; index < 5; index++)
+            {
+                Console.WriteLine(generator.Next(minValue, maxValue + 1));
+            }
+
+            /*
+            
+            Summary: 
+
+            1) Requested user input. Stored the input into variables using Convert.ToInt32().
+            2) Used a for() loop to generate 5 values between the two inputted values.
+                a) index = 0 means it starts at 0.
+                b) index < 5 means only give 5 ouputs
+                c) index++ means go to the next value/round.
+
+            */
         }
 
         public static void DiceRoller()
         {
+            Console.OutputEncoding = System.Text.Encoding.UTF8;
+
+            int diceOne, diceTwo, sum;
+
+            Random generator = new Random();
+
+            Console.WriteLine("------------------------- Dice Roller -------------------------");
+            Console.WriteLine();
+
+            string[] one =
+            {
+                @"
+                ┌─────────┐
+                │         │
+                │    ●    │
+                │         │
+                └─────────┘
+                "
+            };
+
+            string[] two =
+            {
+                @"
+                ┌─────────┐
+                │  ●      │
+                │         │
+                │      ●  │
+                └─────────┘
+                "
+            };
+
+            string[] three =
+            {
+                @"
+                ┌─────────┐
+                │  ●      │
+                │    ●    │
+                │      ●  │
+                └─────────┘
+                "
+            };
+
+            string[] four =
+            {
+                @"
+                ┌─────────┐
+                │  ●   ●  │
+                │         │
+                │  ●   ●  │
+                └─────────┘
+                "
+            };
+
+            string[] five =
+            {
+                @"
+                ┌─────────┐
+                │  ●   ●  │
+                │    ●    │
+                │  ●   ●  │
+                └─────────┘
+                "
+            };
+
+            string[] six =
+            {
+                @"
+                ┌─────────┐
+                │  ●   ●  │
+                │  ●   ●  │
+                │  ●   ●  │
+                └─────────┘
+                "
+            };
+
+            Console.WriteLine("Welcome to the DICE ROLLER!");
+            Console.Write("Would you like to roll (yes/no)?");
+            Console.ReadLine().ToLower();
+
+            if (Console.ReadLine() == "yes")
+            {
+                diceOne = generator.Next(1, 7);
+                diceTwo = generator.Next(1, 7);
+
+                if (diceOne == 1)
+                {
+
+                }
+                else if (dice)
+            }
+            else
+            {
+                Console.WriteLine("Alrighty!!! Have a good day then!");
+                Console.ReadLine();
+            }
         }
 
         public static void RandomDecimalNumbers()
@@ -32,6 +154,10 @@ namespace Topic_4___Random_Assignment
         {
             Console.Title = "Topic 4 - Random Asignment";
 
+            RandomIntegers();
+
+
+
 
         }
     }
@@ -40,11 +166,7 @@ namespace Topic_4___Random_Assignment
 /*
 Random Numbers Programming Assignment
 
-Create a new Console application that does the following:
-Part 1 – Random Integers
-Ask the user to enter a minimum and maximum value. Generate and display five random values within
-that range (inclusive) on the same line. Look ahead to use a loop if you don’t want to do it manually.
-Remember that Console.Write() can be used to print multiple things on one line.
+
 Part 2 – Dice Roller
 • Have your program roll two dice. Display each roll and the sum of the rolls.
 

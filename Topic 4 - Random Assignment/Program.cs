@@ -52,13 +52,14 @@ namespace Topic_4___Random_Assignment
             Console.OutputEncoding = System.Text.Encoding.UTF8;
 
             int diceOne, diceTwo, sum;
+            string response;
 
             Random generator = new Random();
 
             Console.WriteLine("------------------------- Dice Roller -------------------------");
             Console.WriteLine();
 
-            string[] one =
+            string[] dice =
             {
                 @"
                 ┌─────────┐
@@ -66,55 +67,40 @@ namespace Topic_4___Random_Assignment
                 │    ●    │
                 │         │
                 └─────────┘
-                "
-            };
+                ", 
 
-            string[] two =
-            {
                 @"
                 ┌─────────┐
                 │  ●      │
                 │         │
                 │      ●  │
                 └─────────┘
-                "
-            };
+                ", 
 
-            string[] three =
-            {
                 @"
                 ┌─────────┐
                 │  ●      │
                 │    ●    │
                 │      ●  │
                 └─────────┘
-                "
-            };
+                ", 
 
-            string[] four =
-            {
                 @"
                 ┌─────────┐
                 │  ●   ●  │
                 │         │
                 │  ●   ●  │
                 └─────────┘
-                "
-            };
+                ",
 
-            string[] five =
-            {
                 @"
                 ┌─────────┐
                 │  ●   ●  │
                 │    ●    │
                 │  ●   ●  │
                 └─────────┘
-                "
-            };
-
-            string[] six =
-            {
+                ",
+                
                 @"
                 ┌─────────┐
                 │  ●   ●  │
@@ -125,29 +111,146 @@ namespace Topic_4___Random_Assignment
             };
 
             Console.WriteLine("Welcome to the DICE ROLLER!");
-            Console.Write("Would you like to roll (yes/no)?");
-            Console.ReadLine().ToLower();
+            Console.Write("Would you like to roll (yes/no): ");
+            response = Console.ReadLine().ToLower();
 
-            if (Console.ReadLine() == "yes")
+            Console.WriteLine();
+
+            if (response == "yes")
             {
                 diceOne = generator.Next(1, 7);
                 diceTwo = generator.Next(1, 7);
+                sum = diceOne + diceTwo;
 
-                if (diceOne == 1)
+                Console.WriteLine($"Congrats! You rolled a {diceOne} and a {diceTwo}! The sum of which is {sum}!");
+
+                if (sum == 2)
                 {
-
+                    Console.WriteLine(dice[1]);
                 }
-                else if (dice)
+                else if (sum == 3)
+                {
+                    Console.WriteLine(dice[2]);
+                }
+                else if (sum == 4)
+                {
+                    Console.WriteLine(dice[3]);
+                }
+                else if (sum == 5)
+                {
+                    Console.WriteLine(dice[4]);
+                }
+                else if (sum == 6)
+                {
+                    Console.WriteLine(dice[5]);
+                }
+                else if (sum == 7)
+                {
+                    if (diceOne == 1 && diceTwo == 2 || diceOne == 2 && diceTwo == 1)
+                    {
+                        Console.WriteLine(dice[0]);
+                        Console.WriteLine(dice[1]);
+                    }
+                    else if (diceOne == 2 && diceTwo == 5 || diceOne == 5 && diceTwo == 2)
+                    {
+                        Console.WriteLine(dice[1]);
+                        Console.WriteLine(dice[4]);
+                    }
+                    else if (diceOne == 3 && diceTwo == 4 || diceOne == 4 && diceTwo == 3)
+                    {
+                        Console.WriteLine(dice[2]);
+                        Console.WriteLine(dice[3]);
+                    }
+                    else if (diceOne == 1 && diceTwo == 6 || diceOne == 6 && diceTwo == 2)
+                    {
+                        Console.WriteLine(dice[0]);
+                        Console.WriteLine(dice[5]);
+                    }
+                }
+                else if (sum == 8)
+                {
+                    if (diceOne == 2 && diceTwo == 6 || diceOne == 6 && diceTwo == 2)
+                    {
+                        Console.WriteLine(dice[1]);
+                        Console.WriteLine(dice[5]);
+                    }
+                    else if (diceOne == 4 && diceTwo == 4)
+                    {
+                        Console.WriteLine(dice[3]);
+                        Console.WriteLine(dice[3]);
+                    }
+                    else if (diceOne == 5 && diceTwo == 3 || diceOne == 3 && diceTwo == 5)
+                    {
+                        Console.WriteLine(dice[4]);
+                        Console.WriteLine(dice[2]);
+                    }
+                }
+                else if (sum == 9)
+                {
+                    if (diceOne == 4 && diceTwo == 5 || diceOne == 5 && diceTwo == 4)
+                    {
+                        Console.WriteLine(dice[3]);
+                        Console.WriteLine(dice[4]);
+                    }
+                    else if (diceOne == 6 && diceTwo == 3 || diceOne == 3 && diceTwo == 6)
+                    {
+                        Console.WriteLine(dice[5]);
+                        Console.WriteLine(dice[2]);
+                    }
+                }
+                else if (sum == 10)
+                {
+                    if (diceOne == 5 && diceTwo == 2 || diceOne == 2 && diceTwo == 5)
+                    {
+                        Console.WriteLine(dice[4]);
+                        Console.WriteLine(dice[1]);
+                    }
+                    else if (diceOne == 6 && diceTwo == 4 || diceOne == 4 && diceTwo == 6)
+                    {
+                        Console.WriteLine(dice[5]);
+                        Console.WriteLine(dice[3]);
+                    }
+                }
+                else if (sum == 11)
+                {
+                    if (diceOne == 6 && diceTwo == 5 || diceOne == 5 && diceTwo == 6)
+                    {
+                        Console.WriteLine(dice[5]);
+                        Console.WriteLine(dice[4]);
+                    }
+                }
+                else if (sum == 12)
+                {
+                    if (diceOne == 6 && diceTwo == 6)
+                    {
+                        Console.WriteLine(dice[5]);
+                        Console.WriteLine(dice[5]); 
+                    }
+                }
             }
             else
             {
                 Console.WriteLine("Alrighty!!! Have a good day then!");
                 Console.ReadLine();
             }
+
+        /*
+        
+            Summary:
+
+            1) Requested user input to play?
+            2) Arranged dice art into a array
+            3) If response was "yes," then diceOne and diceTwo were rolled and added.
+            4) The art of a specific sum was called upon to display.
+                a) Used "and" + "or" statements to balance both probabilites.
+                b) arrary[0] is the first one.
+        */
         }
 
         public static void RandomDecimalNumbers()
         {
+
+
         }
 
         static void Main(string[] args)
@@ -156,6 +259,7 @@ namespace Topic_4___Random_Assignment
 
             RandomIntegers();
 
+            DiceRoller();
 
 
 
@@ -164,11 +268,8 @@ namespace Topic_4___Random_Assignment
 }
 
 /*
-Random Numbers Programming Assignment
+11
 
-
-Part 2 – Dice Roller
-• Have your program roll two dice. Display each roll and the sum of the rolls.
 
 Part 3 – Random Decimal Numbers
 Using the same maximum and minimum values from Part 1, generate and display 3 random decimal

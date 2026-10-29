@@ -12,7 +12,7 @@ namespace Topic_4___Random_Assignment
     {
         public static void RandomIntegers()
         {
-            int number;
+            int minValue, maxValue, answer;
 
             Random generator = new Random();
 
@@ -20,28 +20,43 @@ namespace Topic_4___Random_Assignment
             Console.WriteLine();
 
             Console.Write("Enter a minimum value: ");
-            int minValue = Convert.ToInt32(Console.ReadLine());
+
+            while (!Int32.TryParse(Console.ReadLine(), out minValue))
+            {
+                Console.WriteLine();
+                Console.WriteLine("Invalid input!!! Please try again!");
+                Console.Write("Enter a minimum value: ");
+            }
 
             Console.WriteLine();
 
             Console.Write("Enter a maximum value: ");
-            int maxValue = Convert.ToInt32(Console.ReadLine());
+
+            while (!Int32.TryParse(Console.ReadLine(), out maxValue))
+            {
+                Console.WriteLine();
+                Console.WriteLine("Invalid input!!! Please try again!");
+                Console.Write("Enter a maximum value: ");
+            }
 
             Console.WriteLine();
 
-            for (int index = 0; index < 5; index++)
+            for (int index = 1; index < 6; index++)
             {
-                Console.WriteLine(generator.Next(minValue, maxValue + 1));
+                answer = generator.Next(minValue, maxValue + 1);
+                Console.WriteLine($"Answer: {answer}");
             }
+
+            Console.WriteLine();
 
             /*
             
             Summary: 
 
-            1) Requested user input. Stored the input into variables using Convert.ToInt32().
+            1) Requested user input. Stored the input into variables using Convert.ToInt32() --> Changed to while loop.
             2) Used a for() loop to generate 5 values between the two inputted values.
-                a) index = 0 means it starts at 0.
-                b) index < 5 means only give 5 ouputs
+                a) index = 1 means it starts at 1.
+                b) index < 6 means only give 5 ouputs.
                 c) index++ means go to the next value/round.
 
             */
@@ -234,7 +249,9 @@ namespace Topic_4___Random_Assignment
                 Console.ReadLine();
             }
 
-        /*
+            Console.WriteLine();
+
+            /*
         
             Summary:
 
@@ -244,13 +261,72 @@ namespace Topic_4___Random_Assignment
             4) The art of a specific sum was called upon to display.
                 a) Used "and" + "or" statements to balance both probabilites.
                 b) arrary[0] is the first one.
-        */
+            
+            */
         }
 
         public static void RandomDecimalNumbers()
         {
+            decimal minValue, maxValue, answer, finalAns;
+            int decPlace;
 
+            Random generator = new Random();
 
+            Console.WriteLine("------------------------- Random Decimal Number -------------------------");
+            Console.WriteLine();
+
+            Console.Write("Enter a minimum value (decimal): ");
+
+            while (!Decimal.TryParse(Console.ReadLine(), out minValue))
+            {
+                Console.WriteLine();
+                Console.WriteLine("Invalid input!!! Please try again!");
+                Console.Write("Enter a minimum value (decimal): ");
+            }
+
+            Console.WriteLine();
+
+            Console.Write("Enter a maximum value (decimal): ");
+
+            while (!Decimal.TryParse(Console.ReadLine(), out maxValue))
+            {
+                Console.WriteLine();
+                Console.WriteLine("Invalid input!!! Please try again!");
+                Console.Write("Enter a maximum value (decimal): ");
+            }
+
+            Console.WriteLine();
+
+            Console.Write("Enter the number of decimal places preferred: ");
+
+            while (!Int32.TryParse(Console.ReadLine(), out decPlace))
+            {
+                Console.WriteLine();
+                Console.WriteLine("Invalid input!!! Please try again!");
+                Console.Write("Enter the number of decimal places preferred: ");
+            }
+
+            for (decimal index = 1; index < 4; index++)
+            {
+                answer = (decimal)(((generator.NextDouble() * (double)(maxValue - minValue)) + (double)(minValue)));
+                finalAns = Math.Round(answer, decPlace);
+                Console.WriteLine($"Answer: {finalAns}");
+            }
+
+            /*
+            
+            Summary: 
+
+            1) Requested user input. Stored the input into variables using Convert.ToDecimal() --> Changed to while loop.
+            2) Used a for() loop to generate 3 values between the two inputted values.
+                a) index = 1 means it starts at 1.
+                b) index < 4 means only give 3 ouputs
+                c) index++ means go to the next value/round.
+            3) Math: Find the difference b/w min and max and make it double. Then multiply by random value generated,
+                     following which add in the min in double form. Then convert double back to decimal.
+            4) Option to choose number of decimal places using Math.Round(decimal, int).
+
+            */
         }
 
         static void Main(string[] args)
@@ -261,29 +337,16 @@ namespace Topic_4___Random_Assignment
 
             DiceRoller();
 
-
-
+            RandomDecimalNumbers();
         }
     }
 }
 
 /*
-11
 
-
-Part 3 – Random Decimal Numbers
-Using the same maximum and minimum values from Part 1, generate and display 3 random decimal
-values within that range (inclusive) on the same line.
-Things to consider:
-• There are several ways you could do this. You can just use NextDouble() and do a bit of
-math, or you could generate the decimal and integral part separately.
-• Make sure that the range of random numbers is INCLUSIVE. i.e. the maximum value entered
-could appear in the range of random numbers generated.
-• Test your program several times in a narrow range to ensure that you get all values within the
-specified range.
 
 Part 3 Challenges:
-• Allow user to specify how many decimals values doubles should be rounded to.
+.
 • Ensure that your program doesn’t crash if the user enters a max < min (try If statements).
 • Extra challenge: Allow the user to specify the decimal precision when they randomly generate a
 double. For example, generate a decimal number between 2.5 and 3.5.

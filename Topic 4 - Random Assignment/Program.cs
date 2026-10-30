@@ -32,7 +32,7 @@ namespace Topic_4___Random_Assignment
 
             Console.Write("Enter a maximum value: ");
 
-            while (!Int32.TryParse(Console.ReadLine(), out maxValue))
+            while (!Int32.TryParse(Console.ReadLine(), out maxValue) || maxValue < minValue)
             {
                 Console.WriteLine();
                 Console.WriteLine("Invalid input!!! Please try again!");
@@ -288,7 +288,7 @@ namespace Topic_4___Random_Assignment
 
             Console.Write("Enter a maximum value (decimal): ");
 
-            while (!Decimal.TryParse(Console.ReadLine(), out maxValue))
+            while (!Decimal.TryParse(Console.ReadLine(), out maxValue) || maxValue < minValue)
             {
                 Console.WriteLine();
                 Console.WriteLine("Invalid input!!! Please try again!");
@@ -324,7 +324,7 @@ namespace Topic_4___Random_Assignment
                 c) index++ means go to the next value/round.
             3) Math: Find the difference b/w min and max and make it double. Then multiply by random value generated,
                      following which add in the min in double form. Then convert double back to decimal.
-            4) Option to choose number of decimal places using Math.Round(decimal, int).
+            4) Option to choose number of decimal places using Math.Round(decimal, int).0
 
             */
         }
@@ -342,12 +342,3 @@ namespace Topic_4___Random_Assignment
     }
 }
 
-/*
-
-
-Part 3 Challenges:
-.
-• Ensure that your program doesn’t crash if the user enters a max < min (try If statements).
-• Extra challenge: Allow the user to specify the decimal precision when they randomly generate a
-double. For example, generate a decimal number between 2.5 and 3.5.
-*/
